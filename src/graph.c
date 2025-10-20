@@ -17,3 +17,17 @@ void inicializarGrafo(Grafo* g, int numVertices) {
         for (j = 0; j < numVertices; j++)
             (*g).matrizAdyacencia[i][j] = 0;
 }
+
+void agregarArista(Grafo* g, char v1, char v2, int dirigido) {
+    int i = indiceVertice(g, v1);
+    int j = indiceVertice(g, v2);
+
+    if (i == -1 || j == -1) {
+        printf("Error: vértice no encontrado (%c-%c)\n", v1, v2);
+        return;
+    }
+
+    (*g).matrizAdyacencia[i][j] = 1;
+    if (!dirigido)
+        (*g).matrizAdyacencia[j][i] = 1;
+}
