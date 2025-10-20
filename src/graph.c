@@ -31,3 +31,37 @@ void agregarArista(Grafo* g, char v1, char v2, int dirigido) {
     if (!dirigido)
         (*g).matrizAdyacencia[j][i] = 1;
 }
+
+void leerGrafo(Grafo* g, const char* nombreArchivo, int dirigido) {
+    FILE* archivo = fopen(nombreArchivo, "r");
+    if (!archivo) {
+        printf("No se pudo abrir el archivo %s\n", nombreArchivo);
+        exit(1);
+    }
+
+    char linea[256];
+
+    if (fgets(linea, sizeof(linea), archivo) == NULL) {
+        printf("Archivo vacío\n");
+        exit(1);
+    }
+
+    int contador = 0;
+    char* token = strtok(linea, " \n");
+    while (token != NULL && contador < MAX_VERTICES) {
+        (*g).vertices[contador] = token[0];
+        contador++;
+        token = strtok(NULL, " \n");
+    }
+
+    inicializarGrafo(g, contador);
+
+    while (fgets(linea, sizeof(linea), archivo) != NULL) {
+        if (strlen(linea) < 2) continue;
+        char v1 = linea[0];
+        char v2 = linea[1];
+        agregarArista(g, v1, v2, dirigido);
+    }
+
+    fclose(archivo);
+}
