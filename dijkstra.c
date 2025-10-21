@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#define INF 999
+
+typedef struct {
+    int distancia;
+    bool visto;
+    int padre;
+} Vertice;
+
+
+void inicializar_vertice(Vertice *v) {
+    v->distancia = INF;
+    v->visto = false;
+    v->padre = -1;  
+}
+
+bool hayNoVisitado(Vertice vertices[], int num_vertices) {
+    for (int i = 0; i < num_vertices; i++) {
+        if (!vertices[i].visto) { 
+            return true;
+        }
+    }
+    return false;  
+}
+
+int seleccionarMinimo(Vertice vertices[], int num_vertices) {
+    int minDist = INF;   
+    int minIndex = -1;
+    
+    for (int i = 0; i < num_vertices; i++) {
+        if (!vertices[i].visto && vertices[i].distancia < minDist) {
+            minDist = vertices[i].distancia;
+            minIndex = i;
+        }
+    }
+
+    return minIndex;
+}
+
+void imprimir_camino(int num_vertices, Vertice vertices[num_vertices], int final){
+
+    int indice = final;
+
+
+    if (vertices[indice].distancia == INF) {
+        printf("La distancia entre los vertices ingresados es infinito");
+        return;
+    }
+
+    char camino[num_vertices];
+    int contador = 0;
+
+    while (indice != -1) {
+        camino[contador] = indice_a_letra(indice); 
+        contador++;
+        indice = vertices[indice].padre; 
+    }
+
+    printf("El camino más corto es: ");
+
+    for (int i = contador - 1; i >=0; i--){
+        printf("%c", camino[i]);
+        if (i>0) {
+            printf(" ");
+        }
+    }   
+}
+
+
+char indice_a_letra(int indice) {return 'A' + indice;}
+
+
+void Dijkstra(int num_vertices, int matriz_adyacencia[num_vertices][num_vertices], int inicio, int final){
+    
+    Vertice vertices[num_vertices];
+
+    for(int i = 0; i < num_vertices; i++) {
+        inicializar_vertice(&vertices[i]);
+    }
+    
+    vertices[inicio].distancia = 0; 
+
+    while (hayNoVisitado(vertices, num_vertices)) {
+        int min_index = seleccionarMinimo(vertices, num_vertices);
+        if (min_index == -1) { // Todos los nodos son inalcanzables
+            break;
+        }
+
+        vertices[min_index].visto = true;
+
+        for (int i = 0; i < num_vertices; i++) {                            // Para todo
+            if (!vertices[i].visto && matriz_adyacencia[min_index][i] > 0){ // vecino de u
+
+                int peso_uv = matriz_adyacencia[min_index][i];
+
+                if (vertices[i].distancia > vertices[min_index].distancia + peso_uv) {
+                    vertices[i].distancia = vertices[min_index].distancia + peso_uv;
+                    vertices[i].padre = min_index;
+                }
+
+            }
+            
+        }
+        
+    }
+
+
+    imprimir_camino(num_vertices, vertices, final);
+    
+}
+
+
+
