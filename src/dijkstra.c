@@ -5,6 +5,8 @@
 
 #define INF 999
 
+char indice_a_letra(int indice);
+
 typedef struct {
     int distancia;
     bool visto;
@@ -40,15 +42,11 @@ int seleccionarMinimo(Vertice vertices[], int num_vertices) {
     return minIndex;
 }
 
-char indice_a_letra(int indice) {
-    return 'A' + indice;
-}
-
 void imprimir_camino(int num_vertices, Vertice vertices[num_vertices], int final) {
     int indice = final;
 
     if (vertices[indice].distancia == INF) {
-        printf("La distancia entre los vertices ingresados es infinito");
+        printf("La distancia entre los vertices ingresados es infinito\n");
         return;
     }
 
@@ -69,6 +67,11 @@ void imprimir_camino(int num_vertices, Vertice vertices[num_vertices], int final
             printf(" ");
         }
     }
+    printf("\n");
+}
+
+char indice_a_letra(int indice) {
+    return 'a' + indice;
 }
 
 void Dijkstra(Grafo* g, int inicio, int final) {
