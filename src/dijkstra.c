@@ -40,6 +40,10 @@ int seleccionarMinimo(Vertice vertices[], int num_vertices) {
     return minIndex;
 }
 
+char indice_a_letra(int indice) {
+    return 'A' + indice;
+}
+
 void imprimir_camino(int num_vertices, Vertice vertices[num_vertices], int final) {
     int indice = final;
 
@@ -65,10 +69,6 @@ void imprimir_camino(int num_vertices, Vertice vertices[num_vertices], int final
             printf(" ");
         }
     }
-}
-
-char indice_a_letra(int indice) {
-    return 'A' + indice;
 }
 
 void Dijkstra(Grafo* g, int inicio, int final) {
