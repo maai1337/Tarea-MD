@@ -33,7 +33,6 @@ void agregarArista(Grafo* g, char v1, char v2, int dirigido) {
         (*g).matrizAdyacencia[j][i] = 1;
 }
 
-//main 2
 void leerGrafo(Grafo* g, const char* nombreArchivo, int dirigido) {
     FILE* archivo = fopen(nombreArchivo, "r");
     if (!archivo) {
@@ -59,11 +58,15 @@ void leerGrafo(Grafo* g, const char* nombreArchivo, int dirigido) {
     inicializarGrafo(g, contador);
 
     while (fgets(linea, sizeof(linea), archivo) != NULL) {
-        if (strlen(linea) < 2) continue;
-        char v1 = linea[0];
-        char v2 = linea[1];
-        agregarArista(g, v1, v2, dirigido);
+    char* token = strtok(linea, " \n");
+    while (token != NULL) {
+        if (strlen(token) >= 2) {
+            char v1 = token[0];
+            char v2 = token[1];
+            agregarArista(g, v1, v2, dirigido);
+        }
+        token = strtok(NULL, " \n");
     }
-
+}
     fclose(archivo);
 }
