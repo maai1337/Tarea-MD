@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "grafo.h"
+#include "graph.h"
+
 
 int indiceVertice(Grafo* g, char v) {
     int i;
@@ -32,6 +33,7 @@ void agregarArista(Grafo* g, char v1, char v2, int dirigido) {
         (*g).matrizAdyacencia[j][i] = 1;
 }
 
+//main 2
 void leerGrafo(Grafo* g, const char* nombreArchivo, int dirigido) {
     FILE* archivo = fopen(nombreArchivo, "r");
     if (!archivo) {
