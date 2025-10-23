@@ -25,4 +25,4 @@ gcc main.c graph.c dijkstra.c -o programa
 ## Ejecución 
 ### Para ejecutar el programa ingrese:
 ```
-./programa <vértice_inicial_en_minúsculas> <vértice_final_en_minúsculas> <archivo.txt> <0_para_grafo_o_1_para_dígrafo>
+./programa <vértice_inicial_en_minúsculas> <vértice_final_en_minúsculas> <archivo_grafo.txt> <0_para_grafo_o_1_para_dígrafo>
