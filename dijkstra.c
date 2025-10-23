@@ -46,7 +46,7 @@ void imprimir_camino(int num_vertices, Vertice vertices[num_vertices], int final
     int indice = final;
 
     if (vertices[indice].distancia == INF) {
-        printf("La distancia entre los vertices ingresados es infinito\n");
+        printf("La distancia entre los vertices ingresados es infinita.\n");
         return;
     }
 
