@@ -1,11 +1,11 @@
 ### Integrantes
-Sebastian Nova Sánchez - Ing. Civil Informática(2025402688)
+Sebastian Nova Sánchez - Ing. Civil Informática
 
-Cristóbal Figueroa Morales - Ing. Civil Informática(2024437224)
+Cristóbal Figueroa Morales - Ing. Civil Informática
 
-Luis Martinez Neira - Ing. Civil Informática (2023427985)
+Luis Martinez Neira - Ing. Civil Informática 
 
-Fernanda Rubilar Sánchez - Ing. Civil Informática(2023422517)
+Fernanda Rubilar Sánchez - Ing. Civil Informática
 
 
 # Instrucciones de compilación y ejecución
