@@ -1,11 +1,11 @@
 ### Integrantes
-Sebastian Nova Sánchez - Ing. Civil Informática
+Sebastian Nova Sánchez - SebastianNovaOne
 
-Cristóbal Figueroa Morales - Ing. Civil Informática
+Cristóbal Figueroa Morales - maai1337
 
-Luis Martinez Neira - Ing. Civil Informática 
+Luis Martinez Neira - Nachopex
 
-Fernanda Rubilar Sánchez - Ing. Civil Informática
+Fernanda Rubilar Sánchez - Catalinafer2023
 
 
 # Instrucciones de compilación y ejecución
